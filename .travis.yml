@@ -13,8 +13,8 @@ services:
 
 script:
   - cd src
-  - docker build -t tugrulelmas/photo-search:${BUILD_NUMBER} .
-  - docker build -t tugrulelmas/photo-search .
+  - docker build -f PhotoSearch.Api/Dockerfile -t tugrulelmas/photo-search:${BUILD_NUMBER} .
+  - docker build -f PhotoSearch.Api/Dockerfile -t tugrulelmas/photo-search .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
