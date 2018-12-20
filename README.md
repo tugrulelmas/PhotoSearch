@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/tugrulelmas/PhotoSearch.svg?branch=master)](https://travis-ci.org/tugrulelmas/PhotoSearch)
 
 # PhotoSearch
-Search photos on [flickr.com](https://www.flickr.com).
+Searches photos on [flickr.com](https://www.flickr.com).
 
 # Usage
 Run this command `docker run -p 8080:80 tugrulelmas/photo-search -e [flickr-api-key]` and browse the url http://localhost:8080/swagger with your favourite browser.
