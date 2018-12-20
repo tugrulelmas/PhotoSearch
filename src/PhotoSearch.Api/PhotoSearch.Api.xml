@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhotoSearch.Api</name>
+    </assembly>
+    <members>
+        <member name="M:PhotoSearch.Api.ActionDecorators.ActionDecoratorFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            Called when action is being executed asynchronous.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="next">The next.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.ActionDecorators.IActionBeforeDecorator.Decorate(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Decorates the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:PhotoSearch.Api.ActionDecorators.IActionExceptionDecorator.Decorate(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,System.Exception)">
+            <summary>
+            Decorates the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:PhotoSearch.Api.Authentication.AuthorizationFilterAttribute">
+            <summary>
+            Authorization Filter Attribute
+            </summary>
+            <seealso cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter" />
+        </member>
+        <member name="M:PhotoSearch.Api.Authentication.AuthorizationFilterAttribute.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Applies the authorization parameters and responses.
+            </summary>
+            <param name="operation">The operation.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:PhotoSearch.Api.Controllers.ApiController">
+            <summary>
+            ApiController
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="T:PhotoSearch.Api.Controllers.AuthController">
+            <summary>
+            Auth controller
+            </summary>
+            <seealso cref="T:PhotoSearch.Api.Controllers.ApiController" />
+        </member>
+        <member name="M:PhotoSearch.Api.Controllers.AuthController.#ctor(PhotoSearch.Api.Infrastructure.IAbiokaToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PhotoSearch.Api.Controllers.AuthController"/> class.
+            </summary>
+            <param name="abiokaToken"></param>
+        </member>
+        <member name="M:PhotoSearch.Api.Controllers.AuthController.Login(System.String)">
+            <summary>
+            Creates new JWT.
+            </summary>
+            <param name="userName">The user name.</param>
+            <returns></returns>
+            <exception cref="T:PhotoSearch.Api.Exceptions.DenialException"></exception>
+        </member>
+        <member name="T:PhotoSearch.Api.Controllers.PhotosController">
+            <summary>
+            PhotosController
+            </summary>
+        </member>
+        <member name="M:PhotoSearch.Api.Controllers.PhotosController.#ctor(MediatR.IMediator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PhotoSearch.Api.Controllers.PhotosController"/> class.
+            </summary>
+            <param name="mediator">The mediator.</param>
+        </member>
+        <member name="M:PhotoSearch.Api.Controllers.PhotosController.Get(System.String,System.Nullable{System.Double},System.Nullable{System.Double},System.Int32,System.Int32)">
+            <summary>
+            Gets the photos.
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="lat">The latitude.</param>
+            <param name="lon">The longitude.</param>
+            <param name="page">The page.</param>
+            <param name="limit">The limit.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Controllers.PhotosController.Get(System.Int64)">
+            <summary>
+            Gets the photo.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PhotoSearch.Api.Entities.Owner">
+            <summary>
+            Owner
+            </summary>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Owner.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Owner.RealName">
+            <summary>
+            Gets or sets the name of the real.
+            </summary>
+            <value>The name of the real.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Owner.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Owner.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>The location.</value>
+        </member>
+        <member name="T:PhotoSearch.Api.Entities.Photo">
+            <summary>
+            Photo
+            </summary>
+            <seealso cref="T:System.Object" />
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Owner">
+            <summary>
+            Gets or sets the owner.
+            </summary>
+            <value>The owner.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Secret">
+            <summary>
+            Gets or sets the secret.
+            </summary>
+            <value>The secret.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Server">
+            <summary>
+            Gets or sets the server.
+            </summary>
+            <value>The server.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Farm">
+            <summary>
+            Gets or sets the farm.
+            </summary>
+            <value>The farm.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.IsFavorite">
+            <summary>
+            Gets or sets a value indicating whether this instance is favorite.
+            </summary>
+            <value>
+              <c>true</c> if this instance is favorite; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.License">
+            <summary>
+            Gets or sets the license.
+            </summary>
+            <value>The license.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.SafetyLevel">
+            <summary>
+            Gets or sets the safety level.
+            </summary>
+            <value>The safety level.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.Rotation">
+            <summary>
+            Gets or sets the rotation.
+            </summary>
+            <value>The rotation.</value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.Photo.UploadedDate">
+            <summary>
+            Gets or sets the uploaded date.
+            </summary>
+            <value>
+            The uploaded date.
+            </value>
+        </member>
+        <member name="T:PhotoSearch.Api.Entities.PhotoSummary">
+            <summary>
+            PhotoSummary
+            </summary>
+            <seealso cref="!:Object" />
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Owner">
+            <summary>
+            Gets or sets the owner.
+            </summary>
+            <value>
+            The owner.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Secret">
+            <summary>
+            Gets or sets the secret.
+            </summary>
+            <value>
+            The secret.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Server">
+            <summary>
+            Gets or sets the server.
+            </summary>
+            <value>
+            The server.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Farm">
+            <summary>
+            Gets or sets the farm.
+            </summary>
+            <value>
+            The farm.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>
+            The title.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.IsPublic">
+            <summary>
+            Gets or sets a value indicating whether this instance is public.
+            </summary>
+            <value>
+              <c>true</c> if this instance is public; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.IsFriend">
+            <summary>
+            Gets or sets a value indicating whether this instance is friend.
+            </summary>
+            <value>
+              <c>true</c> if this instance is friend; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Entities.PhotoSummary.IsFamily">
+            <summary>
+            Gets or sets a value indicating whether this instance is family.
+            </summary>
+            <value>
+              <c>true</c> if this instance is family; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:PhotoSearch.Api.Exceptions.Adapters.IExceptionAdapterFactory.GetAdapter(System.Exception)">
+            <summary>
+            Gets the adapter.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.IAbiokaToken.CreateToken(PhotoSearch.Api.Authentication.CustomIdentity)">
+            <summary>
+            Creates the token.
+            </summary>
+            <param name="identity">The identity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.IAbiokaToken.GetIdentity(System.String)">
+            <summary>
+            Gets the identity.
+            </summary>
+            <param name="token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.ICache.Remove(System.Object)">
+            <summary>
+            Removes the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.ICache.TryGetValue``1(System.Object,``0@)">
+            <summary>
+            Tries the get value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.ICache.Set``1(System.Object,``0,System.TimeSpan)">
+            <summary>
+            Sets the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="absoluteExpirationRelativeToNow">The absolute expiration relative to now.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PhotoSearch.Api.Infrastructure.ICacheable.CacheKey">
+            <summary>
+            Gets the cache key.
+            </summary>
+            <value>
+            The cache key.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Infrastructure.ICacheable.Duration">
+            <summary>
+            Gets the duration.
+            </summary>
+            <value>
+            The duration.
+            </value>
+        </member>
+        <member name="M:PhotoSearch.Api.Infrastructure.IHttpClient.GetAsync``1(System.String)">
+            <summary>
+            Gets the asynchronous.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="requestUri">The request URI.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PhotoSearch.Api.Infrastructure.IPage`1.Pages">
+            <summary>
+            Gets the pages count.
+            </summary>
+            <value>
+            The pages.
+            </value>
+        </member>
+        <member name="P:PhotoSearch.Api.Infrastructure.IPage`1.Data">
+            <summary>
+            Gets the data.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="M:PhotoSearch.Api.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Creates the web host builder.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Services.IPhotoService.GetPhotoAsync(PhotoSearch.Api.Requests.GetPhotoByIdRequest)">
+            <summary>
+            Gets the photo asynchronous.
+            </summary>
+            <param name="request">The request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Services.IPhotoService.GetPhotoSummariesAsync(PhotoSearch.Api.Requests.GetPhotoSummariesRequest)">
+            <summary>
+            Gets the photo summaries asynchronous.
+            </summary>
+            <param name="request">The request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Services.IUrlBuilder.Method(PhotoSearch.Api.Entities.MethodType)">
+            <summary>
+            Sets the specified method type.
+            </summary>
+            <param name="methodType">Type of the method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Services.IUrlBuilder.AddQueryParameter(PhotoSearch.Api.Entities.ParameterName,System.String)">
+            <summary>
+            Adds the query parameter.
+            </summary>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Services.IUrlBuilder.Build">
+            <summary>
+            Builds the url.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PhotoSearch.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PhotoSearch.Api.Startup"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="P:PhotoSearch.Api.Startup.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="M:PhotoSearch.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures the services.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:PhotoSearch.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Configures the specified application.
+            </summary>
+            <param name="app">The application.</param>
+            <param name="env">The env.</param>
+        </member>
+    </members>
+</doc>
