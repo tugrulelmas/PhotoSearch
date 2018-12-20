@@ -8,6 +8,20 @@
     <DocumentationFile>..\PhotoSearch.Api\PhotoSearch.Api.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>..\PhotoSearch.Api\PhotoSearch.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="PhotoSearch.Api.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="PhotoSearch.Api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.1.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.1.2" />
