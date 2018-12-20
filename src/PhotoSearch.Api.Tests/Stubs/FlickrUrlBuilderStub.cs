@@ -10,17 +10,16 @@ namespace PhotoSearch.Api.Tests.Stubs
     internal class FlickrUrlBuilderStub : FlickrUrlBuilder
     {
         public FlickrUrlBuilderStub()
-            : base(ConfigurationTest.Empty) {
-
+            : base(ConfigurationTest.Default) {
         }
 
         public FlickrUrlBuilderStub(IDictionary<ParameterName, string> parameterMaps)
-            : base(ConfigurationTest.Empty, parameterMaps) {
+            : base(ConfigurationTest.Default, parameterMaps) {
         }
 
         public IDictionary<ParameterName, string> QueryParameters => queryParameters;
 
-        public IDictionary<MethodType, string> KeyMaps => keyMaps;
+        public string ApiKey => apiKey;
 
         public string JsonFormatter => jsonFormatter;
 
@@ -49,7 +48,7 @@ namespace PhotoSearch.Api.Tests.Stubs
                 return section.Object;
             }
 
-            public static IConfiguration Empty => new ConfigurationTest(new Dictionary<string, string> { { "get-info-api-key", "info-key" }, { "search-api-key", "api-key" } });
+            public static IConfiguration Default => new ConfigurationTest(new Dictionary<string, string> { { "flickr-api-key", "api-key" } });
         }
     }
 }

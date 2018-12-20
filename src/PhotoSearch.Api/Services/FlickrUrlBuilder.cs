@@ -11,24 +11,20 @@ namespace PhotoSearch.Api.Services
         protected MethodType methodType;
         protected readonly string jsonFormatter;
         protected readonly string restServiceUrl;
+        protected readonly string apiKey;
         protected readonly IDictionary<ParameterName, string> queryParameters;
         protected readonly IDictionary<MethodType, string> methodMaps;
-        protected readonly IDictionary<MethodType, string> keyMaps;
         protected readonly IDictionary<ParameterName, string> parameterMaps;
 
         public FlickrUrlBuilder(IConfiguration configuration) {
             jsonFormatter = "&format=json&nojsoncallback=1";
             restServiceUrl = "https://api.flickr.com/services/rest/?";
+            apiKey = "&api_key=" + configuration.GetValue<string>("flickr-api-key");
             queryParameters = new Dictionary<ParameterName, string>();
 
             methodMaps = new Dictionary<MethodType, string> {
                 { MethodType.Photo, "getInfo" },
                 { MethodType.Summary, "search" }
-            };
-
-            keyMaps = new Dictionary<MethodType, string> {
-                { MethodType.Photo, "&api_key=" + configuration.GetValue<string>("get-info-api-key") },
-                { MethodType.Summary,"&api_key=" + configuration.GetValue<string>("search-api-key") }
             };
 
             parameterMaps = new Dictionary<ParameterName, string> {
@@ -74,7 +70,7 @@ namespace PhotoSearch.Api.Services
             foreach (var queryParameterItem in queryParameters) {
                 builder.Append($"&{parameterMaps[queryParameterItem.Key]}={queryParameterItem.Value}");
             }
-            builder.Append(keyMaps[methodType]);
+            builder.Append(apiKey);
             builder.Append(jsonFormatter);
 
             return builder.ToString();

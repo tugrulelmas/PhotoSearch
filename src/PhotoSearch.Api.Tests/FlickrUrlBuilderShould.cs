@@ -67,7 +67,7 @@ namespace PhotoSearch.Api.Tests
                             .AddQueryParameter(ParameterName.Keyword, "test")
                             .Build();
 
-            Assert.Equal($"{builder.RestServiceUrl}method=flickr.photos.getInfo&photo_id=12&text=test{builder.KeyMaps[MethodType.Photo]}{builder.JsonFormatter}", url);
+            Assert.Equal($"{builder.RestServiceUrl}method=flickr.photos.getInfo&photo_id=12&text=test{builder.ApiKey}{builder.JsonFormatter}", url);
         }
 
         [Fact]
