@@ -7,7 +7,7 @@ Search photos on [flickr.com](https://www.flickr.com).
 Run this command `docker run -p 8080:80 tugrulelmas/photo-search -e [flickr-api-key]` and browse the url http://localhost:8080/swagger with your favourite browser.
 
 ## Options
-`-e flickr-api-key=<flicker api key>`
+`-e flickr-api-key=<flickr api key>`
 
 Your API application key. See [here](https://www.flickr.com/services/api/misc.api_keys.html) for more details.
 
