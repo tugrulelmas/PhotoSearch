@@ -1,5 +1,5 @@
-﻿using PhotoSearch.Api.Entities;
-using PhotoSearch.Api.Services;
+﻿using Microsoft.Extensions.Configuration;
+using PhotoSearch.Api.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +16,7 @@ namespace PhotoSearch.Api.Services
         protected readonly IDictionary<MethodType, string> keyMaps;
         protected readonly IDictionary<ParameterName, string> parameterMaps;
 
-        public FlickrUrlBuilder() {
+        public FlickrUrlBuilder(IConfiguration configuration) {
             jsonFormatter = "&format=json&nojsoncallback=1";
             restServiceUrl = "https://api.flickr.com/services/rest/?";
             queryParameters = new Dictionary<ParameterName, string>();
@@ -27,8 +27,8 @@ namespace PhotoSearch.Api.Services
             };
 
             keyMaps = new Dictionary<MethodType, string> {
-                { MethodType.Photo, "&api_key=64e2540dc05a8ff75de57f8b102b6364" },
-                { MethodType.Summary,"&api_key=9098edcf1042f4c9445e4f63e75a840e" }
+                { MethodType.Photo, "&api_key=" + configuration.GetValue<string>("get-info-api-key") },
+                { MethodType.Summary,"&api_key=" + configuration.GetValue<string>("search-api-key") }
             };
 
             parameterMaps = new Dictionary<ParameterName, string> {
@@ -41,8 +41,8 @@ namespace PhotoSearch.Api.Services
             };
         }
 
-        protected FlickrUrlBuilder(IDictionary<ParameterName, string> parameterMaps)
-            : this() {
+        protected FlickrUrlBuilder(IConfiguration configuration, IDictionary<ParameterName, string> parameterMaps)
+            : this(configuration) {
             this.parameterMaps = parameterMaps;
         }
 
